@@ -1,0 +1,8 @@
+# Pinned tool binaries installed by setup/setup.ps1
+.tools/
+# Run output (attach the relevant result.json to a change instead)
+results/*
+!results/.gitkeep
+
+# Per-device facts (serials, device names) stay local; see devices.example.json
+devices.json

@@ -1,0 +1,2 @@
+Quick Share transfer fixture for WTC-103 / TC-103.
+Do not edit: run.ps1 compares the received copy with this file.

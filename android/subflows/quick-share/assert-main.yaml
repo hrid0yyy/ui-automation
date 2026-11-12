@@ -1,0 +1,9 @@
+appId: com.google.android.gms
+---
+# Quick Share main screen (Receive tab) is showing. Compose UI: text selectors only.
+- extendedWaitUntil:
+    visible: "Quick Share"
+    timeout: 15000
+- assertVisible: "You'll appear as"
+- assertVisible: "Receive"
+- assertVisible: "Send"

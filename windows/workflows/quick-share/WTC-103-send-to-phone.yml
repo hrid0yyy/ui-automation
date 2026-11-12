@@ -1,0 +1,35 @@
+testCaseId: WTC-103
+name: Quick Share sends a file from the PC to the phone
+app: quick-share
+minVersion: "1.0"
+maxVersion: ""
+tags: [transfer, cross-device]
+settings: [bluetooth:on]
+# run.ps1 starts this phone script in the background first, then runs this one, then checks the file on the phone.
+pairedWith: ../../../android/flows/quick-share/TC-103-receive-from-pc.yaml
+# Repo-relative file to send; run.ps1 passes its absolute path as FIXTURE and compares the received copy.
+fixture: tests/fixtures/quick-share/qs-transfer.txt
+# Variables (run.ps1 passes them; set them with --env when running winrunner.py by hand):
+#   FIXTURE     absolute path of the file to send (tests/fixtures/quick-share/qs-transfer.txt)
+#   PHONE_NAME  the phone's Quick Share name (devices.json, else Settings > Global > device_name)
+window: "name:Quick Share"
+steps:
+  - run_flow: ../../subflows/quick-share/open-home.yml
+  - id: select
+    click: "role:Button && name:Select"
+  - id: files
+    click: "role:Button && name:Files"
+  - id: file_name
+    type: {selector: "role:Window && name:Open >> role:Edit && id:1148", text: "${FIXTURE}", clear: true}
+    timeout: 15
+  - assert: {selector: "role:Window && name:Open >> role:Edit && id:1148", value: "${FIXTURE}"}
+  - id: open
+    invoke: "role:Window && name:Open >> role:SplitButton && id:1"
+  - wait_gone: "role:Window && name:Open"
+  - assert: "role:Group && name~:Selected files"
+  - id: pick_phone
+    click: "role:Group && name:Other devices >> role:Button && name~:${PHONE_NAME}"
+    timeout: 60
+  - id: sent
+    wait: "role:Group && name:Other devices >> role:Button && name~:Sent"
+    timeout: 90

@@ -1,0 +1,22 @@
+testCaseId: WTC-102
+name: Quick Share settings show device options and Back returns home
+app: quick-share
+minVersion: "1.0"
+maxVersion: ""
+tags: [smoke]
+settings: []
+window: "name:Quick Share"
+steps:
+  - run_flow: ../../subflows/quick-share/open-home.yml
+  - id: open_settings
+    click: "role:Button && name:Settings"
+  - wait: "role:Text && name~:About Quick Share"
+  - assert: "role:Text && name~:Device name"
+  - assert: "role:Text && name~:Device visibility"
+  - assert: "role:Text && name~:Save received files to"
+  - assert: "role:Group && name~:Run automatically at startup >> role:CheckBox"
+  - assert: "role:Group && name~:Send usage & diagnostics data >> role:CheckBox"
+  - id: back_home
+    click: "role:Button && name:Back"
+  - wait: "role:Button && name:Select"
+  - assert_not: "role:Text && name~:About Quick Share"

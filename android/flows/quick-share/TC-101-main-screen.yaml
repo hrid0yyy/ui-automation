@@ -1,0 +1,15 @@
+appId: com.google.android.gms
+name: TC-101 Quick Share main screen with Bluetooth on
+properties:
+  testCaseId: "TC-101"
+  app: "quick-share"
+  minVersion: "26.0"
+  maxVersion: ""
+  settings: "bluetooth:on"
+  launchIntent: "-a com.google.android.gms.nearby.QUICK_SHARE"
+tags:
+  - smoke
+---
+- runFlow: ../../subflows/quick-share/assert-main.yaml
+- assertVisible: "Sharing with you"
+- assertNotVisible: "Turn on Bluetooth"

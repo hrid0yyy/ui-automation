@@ -1,0 +1,7 @@
+{
+  "_note": "Copy to devices.json (git-ignored) and add one entry per phone. Key = adb serial (adb devices).",
+  "<adb serial>": {
+    "model": "Redmi Note 15 (2510DRA23G)",
+    "quickShareName": "<name shown in Quick Share under \"You'll appear as\">"
+  }
+}

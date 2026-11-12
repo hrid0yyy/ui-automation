@@ -1,0 +1,11 @@
+# Start Quick Share fresh and wait for the home screen.
+steps:
+  - id: stop_running
+    close: nearby_share.exe
+    optional: true
+  - id: launch
+    launch: {aumid: "NearbyShare_21hpf16v5xp10!NearbyShare", window: "name:Quick Share"}
+    timeout: 30
+  - id: home_ready
+    wait: "role:Button && name:Select"
+    timeout: 20

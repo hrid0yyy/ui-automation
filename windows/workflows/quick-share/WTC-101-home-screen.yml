@@ -1,0 +1,15 @@
+testCaseId: WTC-101
+name: Quick Share home screen shows send and visibility controls
+app: quick-share
+minVersion: "1.0"
+maxVersion: ""
+tags: [smoke]
+settings: []
+window: "name:Quick Share"
+steps:
+  - run_flow: ../../subflows/quick-share/open-home.yml
+  - assert: "role:Text && name:Drop files or folders to send"
+  - assert: {selector: "role:Button && name:Select", enabled: true}
+  - assert: "role:Button && name:Everyone"
+  - assert: "role:Button && name:Settings"
+  - assert: "role:Button && name:Support"

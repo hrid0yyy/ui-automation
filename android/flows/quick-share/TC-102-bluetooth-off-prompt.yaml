@@ -1,0 +1,17 @@
+appId: com.google.android.gms
+name: TC-102 Quick Share asks to turn on Bluetooth when it is off
+properties:
+  testCaseId: "TC-102"
+  app: "quick-share"
+  minVersion: "26.0"
+  maxVersion: ""
+  settings: "bluetooth:off"
+  launchIntent: "-a com.google.android.gms.nearby.QUICK_SHARE"
+tags:
+  - smoke
+  - settings
+---
+- runFlow: ../../subflows/quick-share/assert-main.yaml
+- extendedWaitUntil:
+    visible: "Turn on Bluetooth"
+    timeout: 10000

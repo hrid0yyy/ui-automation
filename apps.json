@@ -1,0 +1,14 @@
+{
+  "quick-share": {
+    "android": {
+      "package": "com.google.android.gms",
+      "receiveDir": "/sdcard/Download/Quick Share",
+      "note": "Quick Share on Android ships inside Google Play services; its version is the GMS versionName."
+    },
+    "windows": {
+      "appx": "NearbyShare",
+      "aumid": "NearbyShare_21hpf16v5xp10!NearbyShare",
+      "process": "nearby_share.exe"
+    }
+  }
+}

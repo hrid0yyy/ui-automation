@@ -1,0 +1,11 @@
+{
+  "maestro": "2.12.1",
+  "jdk": "17",
+  "python_min": "3.10",
+  "python_install": "3.14.10",
+  "pip": {
+    "uiautomation": "2.0.29",
+    "comtypes": "1.4.17",
+    "PyYAML": "6.0.3"
+  }
+}

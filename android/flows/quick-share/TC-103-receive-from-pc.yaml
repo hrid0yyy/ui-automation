@@ -1,0 +1,25 @@
+appId: com.google.android.gms
+name: TC-103 Quick Share accepts a file sent from the PC
+properties:
+  testCaseId: "TC-103"
+  app: "quick-share"
+  minVersion: "26.0"
+  maxVersion: ""
+  settings: "bluetooth:on"
+  launchIntent: "-a com.google.android.gms.nearby.QUICK_SHARE"
+  # Receiver half of WTC-103. Folder runs skip it; run the Windows workflow (it starts this one).
+  # Run this file directly to test receiving on its own: it waits up to 90 s for any device to send.
+  pairedFrom: "../../../windows/workflows/quick-share/WTC-103-send-to-phone.yml"
+tags:
+  - transfer
+  - cross-device
+---
+- runFlow: ../../subflows/quick-share/assert-main.yaml
+- extendedWaitUntil:
+    visible: "Accept request?"
+    timeout: 90000
+- tapOn: "Accept"
+- assertNotVisible: "Accept"
+- extendedWaitUntil:
+    visible: "Received"
+    timeout: 30000
